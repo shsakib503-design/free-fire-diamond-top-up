@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diamond Bazar – Free Fire Diamond Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background:#f5f7fa; font-family: 'Segoe UI', sans-serif; }
+    .hero { background:linear-gradient(120deg,#1d3557,#457b9d); color:white; padding:70px 0; }
+    .package-card:hover { transform:translateY(-5px); transition:0.3s; }
+    footer { background:#1d3557; color:white; padding:25px 0; }
+    .admin-panel { display:none; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Diamond Bazar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
+        <li class="nav-item"><a class="nav-link" href="#how">How it Works</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="#admin">Admin</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="hero text-center">
+  <div class="container">
+    <h1 class="fw-bold display-5">Buy Free Fire Diamonds Instantly</h1>
+    <p class="lead">Fast • Secure • Affordable — Trusted by thousands of gamers</p>
+    <a href="#packages" class="btn btn-warning btn-lg fw-bold mt-3">Shop Now</a>
+  </div>
+</section>
+
+<section id="packages" class="py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4">Diamond Packages</h2>
+    <div class="row g-4">
+
+      <div class="col-md-4 col-12">
+        <div class="card package-card shadow-sm">
+          <div class="card-body text-center">
+            <h3 class="fw-bold">60 Diamonds</h3>
+            <p class="text-muted">Starter Pack</p>
+            <h4 class="fw-bold">$0.99</h4>
+            <button class="btn btn-primary mt-2 w-100 buy-btn" data-pack="60">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-12">
+        <div class="card package-card shadow-sm">
+          <div class="card-body text-center">
+            <h3 class="fw-bold">300 Diamonds</h3>
+            <p class="text-muted">Most Popular</p>
+            <h4 class="fw-bold">$4.49</h4>
+            <button class="btn btn-primary mt-2 w-100 buy-btn" data-pack="300">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-12">
+        <div class="card package-card shadow-sm">
+          <div class="card-body text-center">
+            <h3 class="fw-bold">720 Diamonds</h3>
+            <p class="text-muted">Value Pack</p>
+            <h4 class="fw-bold">$9.99</h4>
+            <button class="btn btn-primary mt-2 w-100 buy-btn" data-pack="720">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="payment" class="py-5 bg-light" style="display:none;">
+  <div class="container col-md-6">
+    <h2 class="fw-bold text-center mb-3">Complete Payment</h2>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <form id="paymentForm">
+          <div class="mb-3">
+            <label class="form-label">Free Fire UID</label>
+            <input type="text" id="uid" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Selected Package</label>
+            <input type="text" id="packageSelected" class="form-control" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Payment Method</label>
+            <select class="form-control" required>
+              <option>Bkash</option>
+              <option>Nagad</option>
+              <option>Rocket</option>
+              <option>Master/Visa Card</option>
+            </select>
+          </div>
+
+          <button class="btn btn-success w-100" type="submit">Pay Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4">How It Works</h2>
+    <div class="row g-4">
+
+      <div class="col-md-3 col-6"><div class="p-3 bg-white shadow-sm rounded text-center"><h5>1. Select Pack</h5></div></div>
+      <div class="col-md-3 col-6"><div class="p-3 bg-white shadow-sm rounded text-center"><h5>2. Enter UID</h5></div></div>
+      <div class="col-md-3 col-6"><div class="p-3 bg-white shadow-sm rounded text-center"><h5>3. Pay</h5></div></div>
+      <div class="col-md-3 col-6"><div class="p-3 bg-white shadow-sm rounded text-center"><h5>4. Delivered</h5></div></div>
+
+    </div>
+  </div>
+</section>
+
+<section id="admin" class="py-5 admin-panel">
+  <div class="container col-md-6">
+    <h2 class="fw-bold text-center mb-3">Admin Panel</h2>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <form id="adminLogin">
+          <div class="mb-3"><label class="form-label">Admin Username</label><input type="text" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label">Password</label><input type="password" class="form-control" required></div>
+          <button class="btn btn-dark w-100" type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="text-center">
+  <div>© <span id="year"></span> Diamond Bazar. All Rights Reserved.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('.buy-btn').forEach(btn => {
+    btn.addEventListener('click', function(){
+      document.getElementById('payment').style.display = 'block';
+      document.getElementById('packageSelected').value = this.dataset.pack + ' Diamonds';
+      window.scrollTo({ top: document.getElementById('payment').offsetTop, behavior: 'smooth' });
+    })
+  })
+
+  document.getElementById('paymentForm').addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Payment Successful! (Demo)');
+  });
+
+  document.getElementById('adminLogin').addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Admin Login Successful (Demo)');
+  });
+</script>
+
+  <!-- Custom Payment Page -->
+  <section id="manual-payment" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4 fw-bold">Manual Payment</h2>
+      <p class="text-center mb-4">Send payment to the numbers below, then upload your transaction details.</p>
+
+      <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+          <div class="card shadow-sm p-3 mb-3">
+            <h5 class="fw-bold">📱 bKash Number</h5>
+            <p class="fs-5 text-primary fw-semibold">01640763578</p>
+          </div>
+          <div class="card shadow-sm p-3">
+            <h5 class="fw-bold">📱 Nagad Number</h5>
+            <p class="fs-5 text-danger fw-semibold">01987816478</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card shadow p-4">
+            <h4 class="fw-bold mb-3 text-center">Submit Payment Proof</h4>
+
+            <form>
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Your Free Fire UID</label>
+                <input type="text" class="form-control" placeholder="Enter your UID" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Transaction ID</label>
+                <input type="text" class="form-control" placeholder="Enter Transaction ID" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Upload Screenshot</label>
+                <input type="file" class="form-control" accept="image/*" required>
+              </div>
+
+              <div class="alert alert-info">
+                After submission, your payment details and UID will be sent to:<br>
+                <strong>shsakib503@gmail.com</strong>
+              </div>
+
+              <button class="btn btn-primary w-100 fw-bold">Submit Payment</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Success Page -->
+  <section id="success" class="py-5 bg-success text-white text-center">
+    <div class="container">
+      <h1 class="fw-bold mb-3">Payment Submitted Successfully! 🎉</h1>
+      <p class="fs-5">Your payment proof and details have been received.</p>
+      <p class="fs-6">We will verify your transaction and deliver the diamonds shortly.</p>
+      <a href="#home" class="btn btn-light fw-bold mt-3">Return to Home</a>
+    </div>
+  </section>
+
+  <!-- Admin Panel -->
+  <section id="admin-panel" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center fw-bold mb-4">Admin Panel – View Submitted Payments</h2>
+
+      <div class="table-responsive shadow-sm">
+        <table class="table table-bordered table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th>UID</th>
+              <th>Transaction ID</th>
+              <th>Screenshot</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Example UID</td>
+              <td>TX12345</td>
+              <td><button class="btn btn-primary btn-sm">View</button></td>
+              <td><span class="badge bg-warning">Pending</span></td>
+              <td><button class="btn btn-success btn-sm">Approve</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert alert-info mt-4">
+        All submitted payment details will be automatically sent to:<br>
+        <strong>shsakib503@gmail.com</strong>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
