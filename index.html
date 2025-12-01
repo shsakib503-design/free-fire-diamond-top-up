@@ -87,10 +87,10 @@
     <h2 class="fw-bold text-center mb-3">Complete Payment</h2>
     <div class="card shadow-sm">
       <div class="card-body">
-        <form id="paymentForm">
+        <form id="paymentFormInline">
           <div class="mb-3">
             <label class="form-label">Free Fire UID</label>
-            <input type="text" id="uid" class="form-control" required>
+            <input type="text" id="uid_inline" class="form-control" required>
           </div>
 
           <div class="mb-3">
@@ -107,26 +107,7 @@
               <option>Master/Visa Card</option>
             </select>
           </div>
-       <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card shadow p-4">
-            <h4 class="fw-bold mb-3 text-center">Submit Payment Proof</h4>
 
-            <form>
-              <div class="mb-3">
-                <label class="form-label fw-semibold">Your Free Fire UID</label>
-                <input type="text" class="form-control" placeholder="Enter your UID" required>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label fw-semibold">Transaction ID</label>
-                <input type="text" class="form-control" placeholder="Enter Transaction ID" required>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label fw-semibold">Upload Screenshot</label>
-                <input type="file" class="form-control" accept="image/*" required>
-              </div>
           <button class="btn btn-success w-100" type="submit">Pay Now</button>
         </form>
       </div>
@@ -138,12 +119,10 @@
   <div class="container">
     <h2 class="fw-bold text-center mb-4">How It Works</h2>
     <div class="row g-4">
-
       <div class="col-md-3 col-6"><div class="p-3 bg-white shadow-sm rounded text-center"><h5>1. Select Pack</h5></div></div>
       <div class="col-md-3 col-6"><div class="p-3 bg-white shadow-sm rounded text-center"><h5>2. Enter UID</h5></div></div>
       <div class="col-md-3 col-6"><div class="p-3 bg-white shadow-sm rounded text-center"><h5>3. Pay</h5></div></div>
       <div class="col-md-3 col-6"><div class="p-3 bg-white shadow-sm rounded text-center"><h5>4. Delivered</h5></div></div>
-
     </div>
   </div>
 </section>
@@ -179,7 +158,7 @@
     })
   })
 
-  document.getElementById('paymentForm').addEventListener('submit', e => {
+  document.getElementById('paymentFormInline').addEventListener('submit', e => {
     e.preventDefault();
     alert('Payment Successful! (Demo)');
   });
@@ -190,135 +169,6 @@
   });
 </script>
 
-  <!-- Custom Payment Page -->
-  <section id="manual-payment" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="text-center mb-4 fw-bold">Manual Payment</h2>
-      <p class="text-center mb-4">Send payment to the numbers below, then upload your transaction details.</p>
-
-      <div class="row justify-content-center mb-4">
-        <div class="col-md-6">
-          <div class="card shadow-sm p-3 mb-3">
-            <h5 class="fw-bold">📱 bKash Number</h5>
-            <p class="fs-5 text-primary fw-semibold">01640763578</p>
-          </div>
-          <div class="card shadow-sm p-3">
-            <h5 class="fw-bold">📱 Nagad Number</h5>
-            <p class="fs-5 text-danger fw-semibold">01987816478</p>
-          </div>
-        </div>
-      </div>
-
-     
-
-              <div class="alert alert-info">
-                After submission, your payment details and UID will be sent to:<br>
-                <strong>shsakib503@gmail.com</strong>
-              </div>
-
-              <button class="btn btn-primary w-100 fw-bold">Submit Payment</button>
-            
-              
-            <form id="paymentForm">
-            </form>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  
-  </section>
-
-  
-  <section id="success" class="py-5 bg-success text-white text-center" style="display:none;">
-
- <script>
-document.getElementById('paymentForm').addEventListener('submit', function(e){
-    e.preventDefault();
-
-    // Payment section hide
-    document.getElementById('manual-payment').style.display = 'none';
-
-    // Success section show
-    document.getElementById('success').style.display = 'block';
-
-    // Smooth scroll to success section
-    window.scrollTo({
-        top: document.getElementById('success').offsetTop,
-        behavior: 'smooth'
-    });
-});
-</script>
-
-  </section>
-
-  <!-- Admin Panel -->
-  <section id="admin-panel" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="text-center fw-bold mb-4">Admin Panel – View Submitted Payments</h2>
-
-      <div class="table-responsive shadow-sm">
-        <table class="table table-bordered table-striped">
-          <thead class="table-dark">
-            <tr>
-              <th>UID</th>
-              <th>Transaction ID</th>
-              <th>Screenshot</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Example UID</td>
-              <td>TX12345</td>
-              <td><button class="btn btn-primary btn-sm">View</button></td>
-              <td><span class="badge bg-warning">Pending</span></td>
-              <td><button class="btn btn-success btn-sm">Approve</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="alert alert-info mt-4">
-        All submitted payment details will be automatically sent to:<br>
-        <strong>shsakib503@gmail.com</strong>
-      </div>
-    </div>
-  </section>
-<a href="https://sakib1234.gamer.gd/login.php" target="_blank">
-  <footer class="text-center">
-  <div>© <span id="year"></span> Diamond Bazar. All Rights Reserved.</div>
-
-  <!-- নিচের ৩টা বাটন = লাস্টের বাটনগুলো -->
-  <div class="mt-3">
-    <!-- ১ নম্বর: Home -->
-    <a href="index.html" class="btn btn-outline-light btn-sm m-1">Home</a>
-
-    <!-- ২ নম্বর: Payment Page (তোমার ২য় HTML ফাইল, নাম হবে payment.html) -->
-    <a href="payment.html" class="btn btn-warning btn-sm m-1" target="_blank">Manual Payment</a>
-
-    <!-- ৩ নম্বর: Admin Website (তোমার login.php) -->
-    <a href="https://sakib1234.gamer.gd/login.php" class="btn btn-danger btn-sm m-1" target="_blank">
-      Admin Login
-    </a>
-  </div>
-</footer>
-
-</body>
-</html>
-</a>
-</body>
-</html>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Diamond Bazar – Payment</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-
 <!-- Manual Payment Form -->
 <section id="manual-payment" class="py-5 bg-light">
   <div class="container" style="max-width:550px;">
@@ -327,32 +177,37 @@ document.getElementById('paymentForm').addEventListener('submit', function(e){
     <form id="paymentForm">
       <div class="mb-3">
         <label class="form-label">Your Name</label>
-        <input id="name" class="form-control" required>
+        <input id="name" name="name" class="form-control" required>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Free Fire UID</label>
-        <input id="uid" class="form-control" required>
+        <input id="uid" name="uid" class="form-control" required>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Amount</label>
-        <input id="amount" class="form-control" required>
+        <input id="amount" name="amount" class="form-control" required>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Phone Number</label>
-        <input id="number" class="form-control" required>
+        <input id="number" name="number" class="form-control" required>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Transaction ID</label>
-        <input id="trxid" class="form-control" required>
+        <input id="trxid" name="trxid" class="form-control" required>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Screenshot URL (optional)</label>
-        <input id="screenshot" class="form-control">
+        <input id="screenshot" name="screenshot" class="form-control" placeholder="http(s)://...">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Upload Screenshot (optional)</label>
+        <input id="screenshotFile" name="screenshotFile" type="file" class="form-control" accept="image/*">
       </div>
 
       <button type="submit" class="btn btn-primary w-100">Submit Payment</button>
@@ -369,45 +224,51 @@ document.getElementById('paymentForm').addEventListener('submit', function(e){
   </div>
 </section>
 
-<!-- Firestore Submit Script -->
-<script type="module">
-import { db } from "./firebase.js";
-import { collection, addDoc, serverTimestamp } 
-  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+<!-- Load the new submit module -->
+<script type="module" src="./upload-and-submit.js"></script>
 
-const paymentForm = document.getElementById("paymentForm");
+<!-- Admin Panel Preview -->
+<section id="admin-panel" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4">Admin Panel – View Submitted Payments</h2>
 
-paymentForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    <div class="table-responsive shadow-sm">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>UID</th>
+            <th>Transaction ID</th>
+            <th>Screenshot</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Example UID</td>
+            <td>TX12345</td>
+            <td><button class="btn btn-primary btn-sm">View</button></td>
+            <td><span class="badge bg-warning">Pending</span></td>
+            <td><button class="btn btn-success btn-sm">Approve</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  const data = {
-    name: document.getElementById("name").value,
-    uid: document.getElementById("uid").value,
-    amount: document.getElementById("amount").value,
-    number: document.getElementById("number").value,
-    trxid: document.getElementById("trxid").value,
-    screenshot: document.getElementById("screenshot").value || null,
-    status: "Pending",
-    createdAt: serverTimestamp()
-  };
+    <div class="alert alert-info mt-4">
+      All submitted payment details will be automatically sent to:<br>
+      <strong>shsakib503@gmail.com</strong>
+    </div>
+  </div>
+</section>
 
-  try {
-    await addDoc(collection(db, "orders"), data);
+<footer class="text-center mt-4">
+  <div>© <span id="year2"></span> Diamond Bazar. All Rights Reserved.</div>
+</footer>
 
-    document.getElementById("manual-payment").style.display = "none";
-    document.getElementById("success").style.display = "block";
-
-    paymentForm.reset();
-
-  } catch (error) {
-    alert("Error submitting payment. Try again.");
-  }
-});
+<script>
+  document.getElementById('year2').textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
-
-
-
-
-
