@@ -5,25 +5,29 @@ import { getStorage, ref as storageRef, uploadBytes, getDownloadURL }
   from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 const paymentForm = document.getElementById("paymentForm");
-const fileInput = document.getElementById("screenshotFile"); // optional file input
-const urlInput = document.getElementById("screenshot"); // optional URL input
+const fileInput = document.getElementById("screenshotFile");
+const urlInput = document.getElementById("screenshot");
 
 if (paymentForm) {
   paymentForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // collect fields
-    const name = document.getElementById("name")?.value || "";
-    const uid = document.getElementById("uid")?.value || "";
-    const amount = document.getElementById("amount")?.value || "";
-    const number = document.getElementById("number")?.value || "";
-    const trxid = document.getElementById("trxid")?.value || "";
+    // Collect values reliably
+    const name = document.getElementById("name")?.value?.trim() || "";
+    const uid = document.getElementById("uid")?.value?.trim() || "";
+    const amount = document.getElementById("amount")?.value?.trim() || "";
+    const number = document.getElementById("number")?.value?.trim() || "";
+    const trxid = document.getElementById("trxid")?.value?.trim() || "";
 
-    // handle screenshot: prefer file upload, fallback to URL input, else null
+    if (!name || !uid || !amount || !number || !trxid) {
+      alert("Please fill all required fields.");
+      return;
+    }
+
     let screenshotUrl = null;
 
     try {
-      if (fileInput && fileInput.files.length > 0) {
+      if (fileInput && fileInput.files && fileInput.files.length > 0) {
         const file = fileInput.files[0];
         const storage = getStorage();
         const path = `screenshots/${Date.now()}_${file.name}`;
@@ -45,16 +49,17 @@ if (paymentForm) {
         createdAt: serverTimestamp()
       };
 
+      console.log("Submitting order to Firestore:", data);
+
       await addDoc(collection(db, "orders"), data);
 
-      // show success UI (match your index.html behavior)
       document.getElementById("manual-payment").style.display = "none";
       document.getElementById("success").style.display = "block";
       paymentForm.reset();
 
     } catch (err) {
       console.error("Submit error:", err);
-      alert("Error submitting payment. Try again.");
+      alert("Error submitting payment. See console for details.");
     }
   });
 }
