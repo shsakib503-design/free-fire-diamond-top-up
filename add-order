@@ -1,36 +1,28 @@
-<script type="module">
-  import { db } from "./firebase.js";
-  import { collection, addDoc, serverTimestamp } 
-  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+<form id="orderForm">
+  <div class="mb-3">
+    <label class="form-label">Free Fire UID</label>
+    <input type="text" id="playerId" class="form-control" placeholder="Enter UID" required>
+  </div>
 
-  // Form select
-  const form = document.getElementById("orderForm");
+  <div class="mb-3">
+    <label class="form-label">Diamond Package</label>
+    <input type="text" id="amount" class="form-control" placeholder="Example: 60 Diamonds" required>
+  </div>
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  <div class="mb-3">
+    <label class="form-label">Payment Method</label>
+    <select id="paymentMethod" class="form-control" required>
+      <option value="Bkash">Bkash</option>
+      <option value="Nagad">Nagad</option>
+      <option value="Rocket">Rocket</option>
+      <option value="Card">Master/Visa</option>
+    </select>
+  </div>
 
-    // Read input values
-    const playerId = document.getElementById("playerId").value;
-    const amount = document.getElementById("amount").value;
-    const paymentMethod = document.getElementById("paymentMethod").value;
-    const transactionId = document.getElementById("transactionId").value;
+  <div class="mb-3">
+    <label class="form-label">Transaction ID</label>
+    <input type="text" id="transactionId" class="form-control" placeholder="Enter TXN ID" required>
+  </div>
 
-    try {
-      // Add order to Firestore
-      await addDoc(collection(db, "orders"), {
-        playerId: playerId,
-        amount: amount,
-        paymentMethod: paymentMethod,
-        transactionId: transactionId,
-        createdAt: serverTimestamp()
-      });
-
-      alert("Order submitted successfully!");
-      window.location.href = "success.html";
-
-    } catch (error) {
-      console.error("Error saving order:", error);
-      alert("Failed to submit order.");
-    }
-  });
-</script>
+  <button class="btn btn-primary w-100" type="submit">Submit Payment</button>
+</form>
