@@ -1,0 +1,36 @@
+<script type="module">
+  import { db } from "./firebase.js";
+  import { collection, addDoc, serverTimestamp } 
+  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  // Form select
+  const form = document.getElementById("orderForm");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Read input values
+    const playerId = document.getElementById("playerId").value;
+    const amount = document.getElementById("amount").value;
+    const paymentMethod = document.getElementById("paymentMethod").value;
+    const transactionId = document.getElementById("transactionId").value;
+
+    try {
+      // Add order to Firestore
+      await addDoc(collection(db, "orders"), {
+        playerId: playerId,
+        amount: amount,
+        paymentMethod: paymentMethod,
+        transactionId: transactionId,
+        createdAt: serverTimestamp()
+      });
+
+      alert("Order submitted successfully!");
+      window.location.href = "success.html";
+
+    } catch (error) {
+      console.error("Error saving order:", error);
+      alert("Failed to submit order.");
+    }
+  });
+</script>
