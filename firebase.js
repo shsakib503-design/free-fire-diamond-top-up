@@ -2,14 +2,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// TODO: Replace the config below with your Firebase project's config
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "REPLACE_WITH_API_KEY",
-  authDomain: "REPLACE_WITH_AUTH_DOMAIN",
-  projectId: "REPLACE_WITH_PROJECT_ID",
-  storageBucket: "REPLACE_WITH_STORAGE_BUCKET",
-  messagingSenderId: "REPLACE_WITH_MESSAGING_SENDER_ID",
-  appId: "REPLACE_WITH_APP_ID"
+  apiKey: "AIzaSyAFE-VbD_13l4f5S3i_HgjCPkzGQrVUSwQ",
+  authDomain: "free-fire-top-up-2fe02.firebaseapp.com",
+  projectId: "free-fire-top-up-2fe02",
+  storageBucket: "free-fire-top-up-2fe02.firebasestorage.app",
+  messagingSenderId: "198242061394",
+  appId: "1:198242061394:web:fc0ff91edde5cf6a61638b",
+  measurementId: "G-XBPJ280T83"
 };
 
 const app = initializeApp(firebaseConfig);
