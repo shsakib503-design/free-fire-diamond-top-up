@@ -177,23 +177,40 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // When a package Buy button is clicked we:
+  // - show the inline payment form
+  // - set the inline package display
+  // - set the manual payment form's package field as well (so it auto-fills)
   document.querySelectorAll('.buy-btn').forEach(btn => {
     btn.addEventListener('click', function(){
+      const packName = this.dataset.pack;
       // Show inline payment card and set package
       document.getElementById('payment').style.display = 'block';
-      document.getElementById('packageSelected').value = this.dataset.pack;
+      document.getElementById('packageSelected').value = packName;
+
+      // Also ensure manual submit form has the selected package auto-filled
+      const manualPkg = document.getElementById('package_manual');
+      if (manualPkg) manualPkg.value = packName;
+
       // Scroll to the inline payment card
       window.scrollTo({ top: document.getElementById('payment').offsetTop, behavior: 'smooth' });
     })
   })
 
+  // When the inline payment form is submitted, copy uid and package to the manual form
   document.getElementById('paymentFormInline').addEventListener('submit', e => {
     e.preventDefault();
-    // Copy UID from inline form to the manual payment form (so user doesn't have to re-type)
     const uidInline = document.getElementById('uid_inline').value.trim();
+    const pkgInline = document.getElementById('packageSelected').value.trim();
+
     if (uidInline) {
-      document.getElementById('uid').value = uidInline;
+      const manualUid = document.getElementById('uid');
+      if (manualUid) manualUid.value = uidInline;
     }
+    // Ensure package is set in manual form too
+    const manualPkg = document.getElementById('package_manual');
+    if (manualPkg && pkgInline) manualPkg.value = pkgInline;
+
     // Optionally hide the inline payment card and smoothly scroll to the manual submission area
     document.getElementById('payment').style.display = 'none';
     const manualSection = document.getElementById('manual-payment');
@@ -225,6 +242,12 @@
       </div>
 
       <div class="mb-3">
+        <label class="form-label">Selected Package</label>
+        <!-- This will be auto-filled when the user clicks Buy or when completing inline payment -->
+        <input id="package_manual" name="package" class="form-control" readonly>
+      </div>
+
+      <div class="mb-3">
         <label class="form-label">Amount</label>
         <input id="amount" name="amount" class="form-control" required>
       </div>
@@ -239,10 +262,6 @@
         <input id="trxid" name="trxid" class="form-control" required>
       </div>
 
-      
-
-      
-
       <button type="submit" class="btn btn-primary w-100">Submit Payment</button>
     </form>
   </div>
@@ -251,8 +270,8 @@
 <!-- Success Message -->
 <section id="success" style="display:none;" class="py-5 text-center bg-success text-white">
   <div class="container">
-    <h1 class="fw-bold">Payment Submitted Successfully 🎉</h1>
-    <p>Your payment details are received.</p>
+    <h1 id="success-title" class="fw-bold">Payment Submitted Successfully 🎉</h1>
+    <p id="success-message">Your payment details are received. Please wait for 5 minutes for delivery.</p>
     <a href="index.html" class="btn btn-light">Return Home</a>
   </div>
 </section>
@@ -301,9 +320,37 @@
 
 <script>
   document.getElementById('year2').textContent = new Date().getFullYear();
+
+  // Handle manual payment submit:
+  // - prevent default form post
+  // - optionally you could validate / send to server here
+  // - show the success message and instruct user to wait 5 minutes for delivery
+  document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // gather some values for the success message (optional)
+    const packageName = document.getElementById('package_manual')?.value || 'Selected Package';
+    const uid = document.getElementById('uid')?.value || '';
+
+    // hide the manual form section
+    document.getElementById('manual-payment').style.display = 'none';
+
+    // update success message to include package and delivery wait notice
+    const successTitle = document.getElementById('success-title');
+    const successMessage = document.getElementById('success-message');
+
+    if (successTitle) successTitle.textContent = 'Payment Submitted Successfully 🎉';
+    if (successMessage) successMessage.innerHTML = Your payment details for <strong>${packageName}</strong> (UID: ${uid}) have been received. Please wait for 5 minutes for delivery.;
+
+    // show success section
+    document.getElementById('success').style.display = 'block';
+    // scroll to top of success
+    document.getElementById('success').scrollIntoView({ behavior: 'smooth' });
+
+    // Here you could also call your upload-and-submit.js module logic or
+    // send the form data via fetch to your backend.
+  });
 </script>
 
 </body>
 </html>
-
-       
