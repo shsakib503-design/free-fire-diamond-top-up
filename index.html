@@ -179,15 +179,27 @@
 
   document.querySelectorAll('.buy-btn').forEach(btn => {
     btn.addEventListener('click', function(){
+      // Show inline payment card and set package
       document.getElementById('payment').style.display = 'block';
-      document.getElementById('packageSelected').value = this.dataset.pack + ' Diamonds';
+      document.getElementById('packageSelected').value = this.dataset.pack;
+      // Scroll to the inline payment card
       window.scrollTo({ top: document.getElementById('payment').offsetTop, behavior: 'smooth' });
     })
   })
 
   document.getElementById('paymentFormInline').addEventListener('submit', e => {
     e.preventDefault();
-    alert('Payment Successful! (Demo)');
+    // Copy UID from inline form to the manual payment form (so user doesn't have to re-type)
+    const uidInline = document.getElementById('uid_inline').value.trim();
+    if (uidInline) {
+      document.getElementById('uid').value = uidInline;
+    }
+    // Optionally hide the inline payment card and smoothly scroll to the manual submission area
+    document.getElementById('payment').style.display = 'none';
+    const manualSection = document.getElementById('manual-payment');
+    if (manualSection) {
+      manualSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 
   document.getElementById('adminLogin').addEventListener('submit', e => {
@@ -299,3 +311,5 @@
 
 </body>
 </html>
+
+       
