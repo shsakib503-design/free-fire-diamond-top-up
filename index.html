@@ -240,14 +240,16 @@
         <label class="form-label">Free Fire UID</label>
         <input id="uid" name="uid" class="form-control" required>
       </div>
-       <div class="mb-3">
+
+      <div class="mb-3">
         <label class="form-label">Selected Package</label>
-        <input id="package_manual" name="package" class="form-control" required>
+        <!-- This will be auto-filled when the user clicks Buy or when completing inline payment -->
+        <input id="package_manual" name="package" class="form-control" readonly>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Amount</label>
-       <input id="number" name="number" class="form-control" required>
+        <input id="amount" name="amount" class="form-control" required>
       </div>
 
       <div class="mb-3">
@@ -306,8 +308,8 @@
     </div>
 
     <div class="alert alert-info mt-4">
-      Customer service Whatsapp:<br>
-      <strong>01604041687</strong>
+      All submitted payment details will be automatically sent to:<br>
+      <strong>shsakib503@gmail.com</strong>
     </div>
   </div>
 </section>
