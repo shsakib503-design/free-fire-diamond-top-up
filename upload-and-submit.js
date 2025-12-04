@@ -18,8 +18,8 @@ if (paymentForm) {
     const amount = document.getElementById("amount")?.value?.trim() || "";
     const number = document.getElementById("number")?.value?.trim() || "";
     const trxid = document.getElementById("trxid")?.value?.trim() || "";
-   
-    if (!name || !uid || !number || !trxid) {
+
+    if (!name || !uid || !amount || !number || !trxid) {
       alert("Please fill all required fields.");
       return;
     }
@@ -41,7 +41,7 @@ if (paymentForm) {
       const data = {
         name,
         uid,
-        package,
+        amount,
         number,
         trxid,
         screenshot: screenshotUrl || null,
